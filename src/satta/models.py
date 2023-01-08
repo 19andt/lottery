@@ -80,3 +80,26 @@ class Bid(models.Model):
         default=timezone.now,
         null=False
     )
+
+
+class Game(models.Model):
+    date = models.DateField(
+        null=False
+    )
+    slot = models.ForeignKey(
+        "slot.Slot", on_delete=models.CASCADE,
+        null=False
+    )
+    winning_number = models.PositiveIntegerField(
+        null=False
+    )
+    winning_number_adjusted = models.BooleanField(
+        null=False
+    )
+    adjusted_winning_number = models.IntegerField(
+        null=True
+    )
+    winner_declared_by = models.ForeignKey(
+        "user.User", on_delete=models.DO_NOTHING,
+        null=False
+    )
