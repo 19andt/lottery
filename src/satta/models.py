@@ -73,7 +73,7 @@ class Bid(models.Model):
         null=False
     )
     slot = models.ForeignKey(
-        "slot.Slot", on_delete=models.CASCADE,
+        "Slot", on_delete=models.CASCADE,
         null=False
     )
     date = models.DateField(
@@ -87,7 +87,7 @@ class Game(models.Model):
         null=False
     )
     slot = models.ForeignKey(
-        "slot.Slot", on_delete=models.CASCADE,
+        "Slot", on_delete=models.CASCADE,
         null=False
     )
     winning_number = models.PositiveIntegerField(
@@ -100,6 +100,6 @@ class Game(models.Model):
         null=True
     )
     winner_declared_by = models.ForeignKey(
-        "user.User", on_delete=models.DO_NOTHING,
+        "User", on_delete=models.DO_NOTHING,
         null=False
     )
