@@ -47,8 +47,9 @@ class Slot(models.Model):
         unique=True,
         null=False
     )
-    time_of_day = models.TimeField(
-        auto_now=True,
+    time_of_day = IntegerRangeField(
+        min_value=0,
+        max_value=23,
         null=False
     )
     result_delta = IntegerRangeField(
@@ -64,7 +65,7 @@ class Bid(models.Model):
         max_value=9999999999,
         null=False
     )
-    bid_value = IntegerRangeField(
+    bid_number = IntegerRangeField(
         min_value=0,
         max_value=99,
         null=False
