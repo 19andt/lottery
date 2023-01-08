@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class IntegerRangeField(models.IntegerField):
@@ -54,4 +55,28 @@ class Slot(models.Model):
         default=0,
         min_value=0,
         max_value=299
+    )
+
+
+class Bid(models.Model):
+    bidder = IntegerRangeField(
+        min_value=1000000000,
+        max_value=9999999999,
+        null=False
+    )
+    bid_value = IntegerRangeField(
+        min_value=0,
+        max_value=99,
+        null=False
+    )
+    bid_amount = models.PositiveIntegerField(
+        null=False
+    )
+    slot = models.ForeignKey(
+        "slot.Slot", on_delete=models.CASCADE,
+        null=False
+    )
+    date = models.DateField(
+        default=timezone.now,
+        null=False
     )
